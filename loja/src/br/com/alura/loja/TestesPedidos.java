@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import br.com.alura.loja.orcamento.Orcamento;
 import br.com.alura.loja.pedido.GeraPedido;
+import br.com.alura.loja.pedido.GeraPedidoHandler;
 import br.com.alura.loja.pedido.Pedido;
 
 public class TestesPedidos {
@@ -24,7 +25,8 @@ public class TestesPedidos {
 		int quantidadeItens = leitura.nextInt();
 		
 		GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeItens);
-		gerador.executa();
+		GeraPedidoHandler handler = new GeraPedidoHandler(/* dependências */);
+		handler.execute(gerador);
 		
 	}
 
