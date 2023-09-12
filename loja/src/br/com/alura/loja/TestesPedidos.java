@@ -2,22 +2,30 @@ package br.com.alura.loja;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 import br.com.alura.loja.orcamento.Orcamento;
+import br.com.alura.loja.pedido.GeraPedido;
 import br.com.alura.loja.pedido.Pedido;
 
 public class TestesPedidos {
 
 	public static void main(String[] args) {
 		
-		Orcamento orcamento = new Orcamento(new BigDecimal("600"), 4);
-		String cliente = "Ana da Silva";
-		LocalDateTime data = LocalDateTime.now();
+		Scanner leitura = new Scanner(System.in);
 		
-		Pedido pedido = new Pedido(cliente, data, orcamento);
+		System.out.println("Informe o nome do cliente: ");
+		String cliente = leitura.nextLine();
 		
-		System.out.println("Salvar pedido no banco de dados");
-		System.out.println("Enviar email com dados do novo pedido");
+		System.out.println("Informe o valor do orçamento: ");
+		BigDecimal valorOrcamento = leitura.nextBigDecimal();
+		
+		System.out.println("Informe a quantidade de itens: ");
+		int quantidadeItens = leitura.nextInt();
+		
+		GeraPedido gerador = new GeraPedido(cliente, valorOrcamento, quantidadeItens);
+		gerador.executa();
+		
 	}
 
 }
